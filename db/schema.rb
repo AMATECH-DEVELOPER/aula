@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_223416) do
+ActiveRecord::Schema.define(version: 2022_03_08_194802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "turmas", force: :cascade do |t|
+    t.string "nome"
+    t.string "curso"
+    t.integer "estado", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "utilizador_id", null: false
+    t.index ["utilizador_id"], name: "index_turmas_on_utilizador_id"
+  end
 
   create_table "utilizadores", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +37,5 @@ ActiveRecord::Schema.define(version: 2022_03_05_223416) do
     t.index ["reset_password_token"], name: "index_utilizadores_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "turmas", "utilizadores"
 end

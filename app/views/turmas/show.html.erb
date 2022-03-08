@@ -1,0 +1,18 @@
+
+<p>
+  <strong>Nome:</strong>
+  <%= @turma.nome %>
+</p>
+
+<p>
+  <strong>Curso:</strong>
+  <%= @turma.curso %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @turma.estado %>
+</p>
+
+<%= link_to 'Edit', edit_turma_path(@turma) %> |
+<%= link_to 'Back', turmas_path %>
