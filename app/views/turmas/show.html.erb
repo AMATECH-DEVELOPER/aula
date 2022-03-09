@@ -14,5 +14,5 @@
   <%= @turma.estado %>
 </p>
 
-<%= link_to 'Edit', edit_turma_path(@turma) %> |
+<%= link_to 'Edit', edit_turma_path(@turma) if can? :update, @turma %> |
 <%= link_to 'Back', turmas_path %>

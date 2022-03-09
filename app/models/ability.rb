@@ -3,10 +3,6 @@
 class Ability
   include CanCan::Ability
 
-  def current_user
-    @current_user ||= false
-  end
-
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
@@ -21,6 +17,7 @@ class Ability
       can :update, Turma do |turma|
         turma.utilizador_id == user.id && turma.activada?
       end
+      can :create, Turma 
 
       #can :destroy, Turma do |turma|
       #  turma.utilizador_id == utilizador.id && turma.activada?
