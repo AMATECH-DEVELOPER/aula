@@ -1,9 +1,14 @@
 class TurmasController < ApplicationController
   before_action :set_turma, only: %i[ show edit update destroy ]
+  load_and_authorize_resource
 
   # GET /turmas or /turmas.json
   def index
-    @turmas = current_utilizador.turmas
+    if administrador?
+      @turmas = Turma.all
+    elsif nao_administrador?
+      @turmas = current_utilizador.turmas
+    end
   end
 
   # GET /turmas/1 or /turmas/1.json

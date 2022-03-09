@@ -17,9 +17,9 @@
         <td><%= turma.nome %></td>
         <td><%= turma.curso %></td>
         <td><%= turma.estado %></td>
-        <td><%= link_to 'Show', turma %></td>
-        <td><%= link_to 'Edit', edit_turma_path(turma) %></td>
-        <td><%= link_to 'Destroy', turma, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', turma if can? :read, turma %></td>
+        <td><%= link_to 'Edit', edit_turma_path(turma) if can? :update, turma %></td>
+        <td><%= link_to 'Destroy', turma, method: :delete, data: { confirm: 'Are you sure?' } if can? :destroy, turma %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Turma', new_turma_path %>
+<%= link_to 'New Turma', new_turma_path if can? :create, Turma %>
